@@ -1,3 +1,25 @@
+class Json {
+  async getJsonData() {
+    try {
+      let result = await fetch("dataset.json");
+      let data = await result.json();
+      data = data.map(object => {
+        const lat = data.latitude;
+        const long = data.longitude;
+        const brightness = data.brightness;
+        return { lat, long, brightness };
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+// latField: "latitude",
+// lngField: "longitude",
+// valueField: "brightness"
+
 var testData = {
   max: 8,
   data: [
