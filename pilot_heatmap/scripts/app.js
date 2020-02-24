@@ -64,7 +64,7 @@ var baseLayer = L.tileLayer(
 );
 
 var cfg = {
-  radius: 2,
+  radius: 0.2,
   maxOpacity: 0.8,
   scaleRadius: true,
   useLocalExtrema: true,
