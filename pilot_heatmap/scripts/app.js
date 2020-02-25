@@ -13,8 +13,6 @@ function loadJSON(callback) {
 function init() {
   loadJSON(function(response) {
     var jsonResponse = JSON.parse(response);
-    //const jsonResponse = response;
-    //console.log(jsonResponse);
 
     var jsonData = {
       data: jsonResponse
@@ -28,9 +26,11 @@ function init() {
       }
     );
 
-    var cfg = {
-      radius: 0.4,
+    var config = {
+      blur: 0.8,
+      radius: 0.2,
       maxOpacity: 0.8,
+      blur: 0.8,
       scaleRadius: true,
       useLocalExtrema: true,
       latField: "latitude",
@@ -38,11 +38,11 @@ function init() {
       valueField: "brightness"
     };
 
-    var heatmapLayer = new HeatmapOverlay(cfg);
+    var heatmapLayer = new HeatmapOverlay(config);
 
     var map = new L.Map("map", {
-      center: new L.LatLng(0, 0),
-      zoom: 2,
+      center: new L.LatLng(30, 0),
+      zoom: 3,
       layers: [baseLayer, heatmapLayer]
     });
 
