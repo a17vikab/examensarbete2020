@@ -1,23 +1,23 @@
 function loadJSON(callback) {
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open("GET", "./dataset.json", true);
-  xobj.onreadystatechange = function() {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(xobj.responseText);
+  var obj = new XMLHttpRequest();
+  obj.overrideMimeType("application/json");
+  obj.open("GET", "./dataset.json", true);
+  obj.onreadystatechange = function() {
+    if (obj.readyState == 4 && obj.status == "200") {
+      callback(obj.responseText);
     }
   };
-  xobj.send(null);
+  obj.send(null);
 }
 
 function init() {
   loadJSON(function(response) {
-    var actual_JSON = JSON.parse(response);
-    const jsonResponse = response;
-    console.log(jsonResponse);
+    var jsonResponse = JSON.parse(response);
+    //const jsonResponse = response;
+    //console.log(jsonResponse);
 
     var jsonData = {
-      data: actual_JSON
+      data: jsonResponse
     };
 
     var baseLayer = L.tileLayer(
@@ -29,7 +29,7 @@ function init() {
     );
 
     var cfg = {
-      radius: 0.5,
+      radius: 0.4,
       maxOpacity: 0.8,
       scaleRadius: true,
       useLocalExtrema: true,
