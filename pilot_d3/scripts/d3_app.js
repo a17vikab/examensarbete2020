@@ -1,4 +1,10 @@
-let map = L.map("map").setView([20, 30], 3);
+function init() {
+  let map = L.map("map").setView([20, 30], 3);
 
-let svg = d3.select("#map").select("svg"),
-  g = svg.append("g");
+  map._initPathRoot();
+
+  let svg = d3.select("#map").select("svg"),
+    g = svg.append("g");
+}
+
+init();
