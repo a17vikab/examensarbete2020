@@ -19,7 +19,6 @@ function init() {
     };
   });
 
-  // let baseLayer = L.map("map").setView([20, 20], 3); .addTo(baseLayer);
   let leafletLayer = L.tileLayer(
     "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
     {
@@ -36,6 +35,17 @@ function init() {
 
   let svg = d3.select("#map").select("svg"),
     g = svg.append("g");
+
+  d3.json(
+    loadJSON(function(response) {
+      let jsonDataResponse = JSON.parse(response);
+      //console.log(jsonDataResponse);
+      let jsonData = {
+        data: jsonDataResponse
+      };
+    }),
+    function(error, data) {}
+  );
 
   let d3Layer;
 }
