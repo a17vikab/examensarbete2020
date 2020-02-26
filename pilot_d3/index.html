@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>D3.js with Leaflet.js</title>
     <link
       rel="stylesheet"
-      href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"
+      href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css"
     />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
+    <script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js"></script>
+    <link rel="stylesheet" href="d3-style.css" />
   </head>
+
   <body>
     <div id="map"></div>
+
     <script type="text/javascript">
-      function init() {
-        let map = L.map("map").setView([20, 30], 3);
+      var baseLayer = L.map("map").setView([20, 20], 3);
+      L.tileLayer(
+        "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
+        {
+          attribution: "D3Pilot",
+          maxZoom: 18
+        }
+      ).addTo(baseLayer);
 
-        map._initPathRoot();
+      baseLayer._initPathRoot();
 
-        let svg = d3.select("#map").select("svg"),
-          g = svg.append("g");
-      }
-
-      init();
+      var svg = d3.select("#map").select("svg"),
+        g = svg.append("g");
     </script>
-    <!-- <script src="/pilot_d3/scripts/d3_app.js"></script> -->
   </body>
 </html>
