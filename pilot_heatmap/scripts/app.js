@@ -13,15 +13,13 @@ function loadJSON(callback) {
 function init() {
   loadJSON(function(response) {
     var jsonResponse = JSON.parse(response);
-    //const jsonResponse = response;
-    //console.log(jsonResponse);
 
     var jsonData = {
       data: jsonResponse
     };
 
     var baseLayer = L.tileLayer(
-      "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
       {
         attribution: "HeatmapTest",
         maxZoom: 18
@@ -31,6 +29,7 @@ function init() {
     var cfg = {
       radius: 0.4,
       maxOpacity: 0.8,
+      blur: 0.4,
       scaleRadius: true,
       useLocalExtrema: true,
       latField: "latitude",
@@ -42,7 +41,7 @@ function init() {
 
     var map = new L.Map("map", {
       center: new L.LatLng(0, 0),
-      zoom: 2,
+      zoom: 3,
       layers: [baseLayer, heatmapLayer]
     });
 
