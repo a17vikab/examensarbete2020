@@ -18,13 +18,19 @@ function init() {
       data: jsonResponse
     };
 
-    var baseLayer = L.tileLayer(
+    var leafletLayer = L.tileLayer(
       "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
       {
         attribution: "HeatmapPilot",
         maxZoom: 18
       }
     );
+
+    var map = new L.Map("map", {
+      center: new L.LatLng(20, 20),
+      zoom: 3,
+      layers: [leafletLayer, heatmapLayer]
+    });
 
     var config = {
       radius: 0.4,
@@ -38,12 +44,6 @@ function init() {
     };
 
     var heatmapLayer = new HeatmapOverlay(config);
-
-    var map = new L.Map("map", {
-      center: new L.LatLng(20, 20),
-      zoom: 3,
-      layers: [baseLayer, heatmapLayer]
-    });
 
     heatmapLayer.setData(jsonData);
   });
