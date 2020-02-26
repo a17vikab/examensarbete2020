@@ -26,10 +26,11 @@ function init() {
       }
     );
 
-    var cfg = {
+    var config = {
+      blur: 0.8,
       radius: 0.4,
       maxOpacity: 0.8,
-      blur: 0.4,
+      blur: 0.3,
       scaleRadius: true,
       useLocalExtrema: true,
       latField: "latitude",
@@ -37,7 +38,7 @@ function init() {
       valueField: "brightness"
     };
 
-    var heatmapLayer = new HeatmapOverlay(cfg);
+    var heatmapLayer = new HeatmapOverlay(config);
 
     var map = new L.Map("map", {
       center: new L.LatLng(0, 0),
