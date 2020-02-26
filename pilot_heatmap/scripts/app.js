@@ -12,13 +12,13 @@ function loadJSON(callback) {
 
 function init() {
   loadJSON(function(response) {
-    var jsonResponse = JSON.parse(response);
+    let jsonResponse = JSON.parse(response);
 
-    var jsonData = {
+    let jsonData = {
       data: jsonResponse
     };
 
-    var leafletLayer = L.tileLayer(
+    let leafletLayer = L.tileLayer(
       "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
       {
         attribution: "HeatmapPilot",
@@ -26,13 +26,13 @@ function init() {
       }
     );
 
-    var map = new L.Map("map", {
+    let map = new L.Map("map", {
       center: new L.LatLng(20, 20),
       zoom: 3,
       layers: [leafletLayer, heatmapLayer]
     });
 
-    var config = {
+    let config = {
       radius: 0.4,
       maxOpacity: 0.8,
       blur: 0.3,
@@ -43,7 +43,7 @@ function init() {
       valueField: "brightness"
     };
 
-    var heatmapLayer = new HeatmapOverlay(config);
+    let heatmapLayer = new HeatmapOverlay(config);
 
     heatmapLayer.setData(jsonData);
   });
