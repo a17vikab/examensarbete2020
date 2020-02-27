@@ -1,5 +1,5 @@
 function loadJSON(callback) {
-  var obj = new XMLHttpRequest();
+  let obj = new XMLHttpRequest();
   obj.overrideMimeType("application/json");
   obj.open("GET", "./dataset.json", true);
   obj.onreadystatechange = function() {
@@ -26,12 +26,6 @@ function init() {
       }
     );
 
-    let map = new L.Map("map", {
-      center: new L.LatLng(20, 20),
-      zoom: 3,
-      layers: [leafletLayer, heatmapLayer]
-    });
-
     let config = {
       radius: 0.4,
       maxOpacity: 0.8,
@@ -44,6 +38,12 @@ function init() {
     };
 
     let heatmapLayer = new HeatmapOverlay(config);
+
+    let map = new L.Map("map", {
+      center: new L.LatLng(20, 20),
+      zoom: 3,
+      layers: [leafletLayer, heatmapLayer]
+    });
 
     heatmapLayer.setData(jsonData);
   });
