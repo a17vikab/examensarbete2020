@@ -17,6 +17,11 @@ function init() {
     ).addTo(map);
 
     L.svg().addTo(map);
+
+    d3.select("#map")
+      .select("svg")
+      .selectAll("myCircles")
+      .data(jsonResponse);
   });
 }
 
