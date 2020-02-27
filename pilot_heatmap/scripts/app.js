@@ -1,7 +1,7 @@
 function loadJSON(callback) {
   let obj = new XMLHttpRequest();
   obj.overrideMimeType("application/json");
-  obj.open("GET", "./dataset.json", true);
+  obj.open("GET", "./dataset_africaeurope2019aug.json", true);
   obj.onreadystatechange = function() {
     if (obj.readyState == 4 && obj.status == "200") {
       callback(obj.responseText);
@@ -22,14 +22,14 @@ function init() {
       "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
       {
         attribution: "HeatmapPilot",
-        maxZoom: 18
+        maxZoom: 12
       }
     );
 
     let config = {
-      radius: 0.4,
+      radius: 0.2,
       maxOpacity: 0.8,
-      blur: 0.3,
+      blur: 0.7,
       scaleRadius: true,
       useLocalExtrema: true,
       latField: "latitude",
