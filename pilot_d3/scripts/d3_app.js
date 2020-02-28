@@ -66,7 +66,7 @@ function init() {
       .attr("r", function(d) {
         return d.brightness * 0.01;
       })
-      // TODO: Link brightness from dataset for visualization.
+      // Depending on brightness, give according fill-color.
       .style("fill", function(d) {
         if (d.brightness <= 310) {
           return "#C4D60A";
@@ -76,20 +76,24 @@ function init() {
           return "#D60C0A";
         }
       })
-      .attr("stroke", function(d) {
-        if (d.brightness <= 310) {
-          return "#C4D60A";
-        } else if (d.brightness <= 320) {
-          return "#FFA500";
-        } else {
-          return "#D60C0A";
-        }
-      })
-      .attr("stroke-width", 0.5)
+      // Depending on brightness, give according stroke-color.
+      // .attr("stroke", function(d) {
+      //   if (d.brightness <= 310) {
+      //     return "#C4D60A";
+      //   } else if (d.brightness <= 320) {
+      //     return "#FFA500";
+      //   } else {
+      //     return "#D60C0A";
+      //   }
+      // })
+      // .attr("stroke-width", 0.5)
       .attr("fill-opacity", 0.7);
 
-    function update() {
+    // Update function to render everything and update when the map changes.
+    function Update() {
+      // Select all d3-circles
       d3.selectAll("circle")
+        // Update the coordniates depending on pan & zoom.
         .attr("cx", function(d) {
           return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
         })
@@ -97,7 +101,9 @@ function init() {
           return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
         });
     }
-    map.on("moveend", update);
+
+    // Fire "Update()" when a move has ended on the map.
+    map.on("moveend", Update);
   });
 }
 
