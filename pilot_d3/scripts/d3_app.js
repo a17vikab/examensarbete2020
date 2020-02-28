@@ -52,7 +52,14 @@ function init() {
       // Add dataset as data() parameter.
       .data(jsonResponse)
       // Append new element "circle" depending on dataset.
-      .append("circle");
+      .append("circle")
+      // Trying to link coordinates from dataset.
+      .attr("cx", function() {
+        return map.latLngToLayerPoint([latitude, longitude]);
+      })
+      .attr("cy", function() {
+        return map.latLngToLayerPoint([latitude, longitude]);
+      });
   });
 }
 
