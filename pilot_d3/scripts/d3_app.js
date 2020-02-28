@@ -51,9 +51,11 @@ function init() {
       .selectAll("dataPoints")
       // Add dataset as data() parameter.
       .data(jsonResponse)
-      // Append new element "object" depending on size of the dataset.
-      .append("object")
-      // Trying to link coordinates from dataset.
+      // Create empty elements for the data.
+      .enter()
+      // Append new element "circle" depending on size of the dataset.
+      .append("circle")
+      // Linking coordinates from dataset to D3.js.
       .attr("cx", function(d) {
         return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
       })
@@ -61,14 +63,14 @@ function init() {
         return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
       })
       // Add radius & style.
-      .attr("r", 10)
-      .style("fill", "green")
-      .attr("stroke", "black")
-      .attr("stroke-width", 3)
-      .attr("fill-opacity", 0.5);
+      .attr("r", 3)
+      .style("fill", "red")
+      .attr("stroke", "orange")
+      .attr("stroke-width", 1)
+      .attr("fill-opacity", 0.6);
 
     function update() {
-      d3.selectAll("object")
+      d3.selectAll("circle")
         .attr("cx", function(d) {
           return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
         })
