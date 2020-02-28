@@ -39,9 +39,9 @@ function init() {
 
     // Variable for config-values
     let config = {
-      radius: 0.2,
+      radius: 0.25,
       maxOpacity: 0.8,
-      blur: 0.7,
+      blur: 0.3,
       scaleRadius: true,
       useLocalExtrema: true,
       // Linking JSON-file-values to Heatmap.js variables.

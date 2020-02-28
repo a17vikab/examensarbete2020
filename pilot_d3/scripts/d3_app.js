@@ -63,10 +63,21 @@ function init() {
         return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
       })
       // Add radius & style.
-      .attr("r", 3)
-      .style("fill", "red")
+      .attr("r", function(d) {
+        return d.brightness * 0.01;
+      })
+      // TODO: Link brightness from dataset for visualization.
+      .style("fill", function(d) {
+        if (d.brightness < 310) {
+          return "blue";
+        } else if (d.brightness < 320) {
+          return "red";
+        } else {
+          return "green";
+        }
+      })
       .attr("stroke", "orange")
-      .attr("stroke-width", 1)
+      .attr("stroke-width", 0.5)
       .attr("fill-opacity", 0.6);
 
     function update() {
