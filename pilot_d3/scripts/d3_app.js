@@ -68,17 +68,25 @@ function init() {
       })
       // TODO: Link brightness from dataset for visualization.
       .style("fill", function(d) {
-        if (d.brightness < 310) {
-          return "blue";
-        } else if (d.brightness < 320) {
-          return "red";
+        if (d.brightness <= 310) {
+          return "#C4D60A";
+        } else if (d.brightness <= 320) {
+          return "#FFA500";
         } else {
-          return "green";
+          return "#D60C0A";
         }
       })
-      .attr("stroke", "orange")
+      .attr("stroke", function(d) {
+        if (d.brightness <= 310) {
+          return "#C4D60A";
+        } else if (d.brightness <= 320) {
+          return "#FFA500";
+        } else {
+          return "#D60C0A";
+        }
+      })
       .attr("stroke-width", 0.5)
-      .attr("fill-opacity", 0.6);
+      .attr("fill-opacity", 0.7);
 
     function update() {
       d3.selectAll("circle")
