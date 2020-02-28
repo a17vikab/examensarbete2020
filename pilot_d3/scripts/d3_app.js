@@ -54,11 +54,11 @@ function init() {
       // Append new element "circle" depending on dataset.
       .append("object")
       // Trying to link coordinates from dataset.
-      .attr("cx", function() {
-        return map.latLngToLayerPoint([latitude]);
+      .attr("cx", function(d) {
+        return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
       })
-      .attr("cy", function() {
-        return map.latLngToLayerPoint([longitude]);
+      .attr("cy", function(d) {
+        return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
       })
       // Add radius & style.
       .attr("r", 10)
@@ -66,11 +66,11 @@ function init() {
 
     function update() {
       d3.selectAll("object")
-        .attr("cx", function() {
-          return map.latLngToLayerPoint([latitude]);
+        .attr("cx", function(d) {
+          return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
         })
-        .attr("cy", function() {
-          return map.latLngToLayerPoint([longitude]);
+        .attr("cy", function(d) {
+          return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
         });
     }
     map.on("move", update);
