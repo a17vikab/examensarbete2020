@@ -5,6 +5,7 @@ function loadJSON(callback) {
   // Specifies type of data.
   obj.overrideMimeType("application/json");
   // Get the JSON-file.
+  // TODO: Fix Path.
   obj.open("GET", "./dataset.json", true);
   // EventHandler for readystatechange.
   obj.onreadystatechange = function() {
