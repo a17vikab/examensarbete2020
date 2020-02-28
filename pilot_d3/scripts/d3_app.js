@@ -51,7 +51,7 @@ function init() {
       .selectAll("dataPoints")
       // Add dataset as data() parameter.
       .data(jsonResponse)
-      // Append new element "circle" depending on dataset.
+      // Append new element "object" depending on size of the dataset.
       .append("object")
       // Trying to link coordinates from dataset.
       .attr("cx", function(d) {
@@ -62,7 +62,10 @@ function init() {
       })
       // Add radius & style.
       .attr("r", 10)
-      .style("fill", "green");
+      .style("fill", "green")
+      .attr("stroke", "black")
+      .attr("stroke-width", 3)
+      .attr("fill-opacity", 0.5);
 
     function update() {
       d3.selectAll("object")
@@ -73,7 +76,7 @@ function init() {
           return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
         });
     }
-    map.on("move", update);
+    map.on("moveend", update);
   });
 }
 
