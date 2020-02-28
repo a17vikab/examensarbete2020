@@ -73,6 +73,7 @@ function init() {
           return map.latLngToLayerPoint([longitude]);
         });
     }
+    map.on("move", update);
   });
 }
 
