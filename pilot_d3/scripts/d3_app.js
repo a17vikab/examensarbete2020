@@ -1,3 +1,23 @@
+// Function to load JSON-dataset asynchronously.
+function loadJSON(callback) {
+  // Create new instance of XMLHttpRequest
+  let obj = new XMLHttpRequest();
+  // Specifies type of data.
+  obj.overrideMimeType("application/json");
+  // Get the JSON-file.
+  obj.open("GET", "./dataset.json", true);
+  // EventHandler for readystatechange.
+  obj.onreadystatechange = function() {
+    // Defining the error.
+    if (obj.readyState == 4 && obj.status == "200") {
+      // Throw an "InvalidStateError".
+      callback(obj.responseText);
+    }
+  };
+  // Initiates request.
+  obj.send(null);
+}
+
 function init() {
   loadJSON(function(response) {
     // Parse the response in JSON-format.
@@ -36,17 +56,5 @@ function init() {
   });
 }
 
-// Function to load dataset.
-function loadJSON(callback) {
-  let obj = new XMLHttpRequest();
-  obj.overrideMimeType("application/json");
-  obj.open("GET", "./dataset.json", true);
-  obj.onreadystatechange = function() {
-    if (obj.readyState == 4 && obj.status == "200") {
-      callback(obj.responseText);
-    }
-  };
-  obj.send(null);
-}
-
+// Run script.
 init();
