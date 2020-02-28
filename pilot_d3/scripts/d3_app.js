@@ -59,7 +59,10 @@ function init() {
       })
       .attr("cy", function() {
         return map.latLngToLayerPoint([latitude, longitude]);
-      });
+      })
+      // Add radius & style.
+      .attr("r", 10)
+      .style("fill", "green");
   });
 }
 
