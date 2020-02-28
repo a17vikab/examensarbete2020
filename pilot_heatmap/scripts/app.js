@@ -18,7 +18,7 @@ function loadJSON(callback) {
   obj.send(null);
 }
 
-function init() {
+function render() {
   loadJSON(function(response) {
     // Parse the response in JSON-format.
     let jsonResponse = JSON.parse(response);
@@ -66,4 +66,4 @@ function init() {
 }
 
 // Run script.
-init();
+render();
