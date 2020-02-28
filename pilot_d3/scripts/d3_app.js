@@ -52,17 +52,27 @@ function init() {
       // Add dataset as data() parameter.
       .data(jsonResponse)
       // Append new element "circle" depending on dataset.
-      .append("circle")
+      .append("object")
       // Trying to link coordinates from dataset.
       .attr("cx", function() {
-        return map.latLngToLayerPoint([latitude, longitude]);
+        return map.latLngToLayerPoint([latitude]);
       })
       .attr("cy", function() {
-        return map.latLngToLayerPoint([latitude, longitude]);
+        return map.latLngToLayerPoint([longitude]);
       })
       // Add radius & style.
       .attr("r", 10)
       .style("fill", "green");
+
+    function update() {
+      d3.selectAll("object")
+        .attr("cx", function() {
+          return map.latLngToLayerPoint([latitude]);
+        })
+        .attr("cy", function() {
+          return map.latLngToLayerPoint([longitude]);
+        });
+    }
   });
 }
 
