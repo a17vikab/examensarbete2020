@@ -6,11 +6,15 @@
 
 <script>
 import HeatmapjsHeatmap from "./components/HeatmapjsHeatmap.vue";
+import Heatmap from "./components/heatmap.js";
+import LeafletHeatmap from "./components/leaflet-heatmap.js";
 
 export default {
   name: "App",
   components: {
-    HeatmapjsHeatmap
+    HeatmapjsHeatmap,
+    Heatmap,
+    LeafletHeatmap
   }
 };
 </script>
