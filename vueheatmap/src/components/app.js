@@ -1,12 +1,3 @@
-<template>
-  <div class="map"></div>
-</template>
-
-<script>
-export default {
-  name: "HeatmapjsHeatmap"
-};
-
 // Function to load JSON-dataset asynchronously.
 function loadJSON(callback) {
   // Create new instance of XMLHttpRequest
@@ -76,7 +67,3 @@ function render() {
 
 // Run script.
 render();
-</script>
-
-<style lang="stylus" scoped></style>
-

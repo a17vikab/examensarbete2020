@@ -1,21 +1,14 @@
 <template>
   <div id="app">
-    <heatmapjsHeatmap></heatmapjsHeatmap>
+    <!-- <heatmap-map></heatmap-map> -->
+    <div id="map"></div>
   </div>
 </template>
 
 <script>
-import HeatmapjsHeatmap from "./components/HeatmapjsHeatmap.vue";
-import Heatmap from "./components/heatmap.js";
-import LeafletHeatmap from "./components/leaflet-heatmap.js";
-
 export default {
   name: "App",
-  components: {
-    HeatmapjsHeatmap,
-    Heatmap,
-    LeafletHeatmap
-  }
+  components: {}
 };
 </script>
 
