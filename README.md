@@ -14,3 +14,6 @@ A comparison of visuualization techniques with D3.js and Heatmap.js based on ren
 - Heatmap.js
 - Leaflet.js
 - Vue.js
+
+Vue Version: 4.2.3
+Vue Installation: Default NPM
