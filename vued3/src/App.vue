@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
     <Heatmap></Heatmap>
   </div>
 </template>
@@ -22,6 +21,8 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-#app {
+body {
+  height: 100vh;
+  width: 100vw;
 }
 </style>
