@@ -1,31 +1,19 @@
 <template>
   <div id="app">
     <Heatmap></Heatmap>
+    <Leaflet></Leaflet>
   </div>
 </template>
 
 <script>
 import Heatmap from "./components/Heatmap.vue";
-import * as d3 from "d3";
+import Leaflet from "./assets/js/leaflet";
 
 export default {
   name: "App",
   components: {
-    Heatmap
-  },
-  data() {
-    return {
-      loadData: {}
-    };
-  },
-  mounted() {
-    this.fetchData();
-  },
-  methods: {
-    async fetchData() {
-      let data = await d3.json("./dataset.json");
-      this.loadData = data;
-    }
+    Heatmap,
+    Leaflet
   }
 };
 </script>
