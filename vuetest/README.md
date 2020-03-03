@@ -1,4 +1,4 @@
-# vueheatmap
+# vuetest
 
 ## Project setup
 ```
