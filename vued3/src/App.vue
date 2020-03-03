@@ -7,6 +7,7 @@
 <script>
 import Heatmap from "./components/Heatmap.vue";
 
+
 export default {
   name: "App",
   components: {
