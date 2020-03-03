@@ -24,7 +24,7 @@ export default {
   methods: {
     async fetchData() {
       let data = await d3.json("./dataset.json");
-      // console.log(data);
+      console.log(data);
       this.loadData = data;
     },
     initMap() {
