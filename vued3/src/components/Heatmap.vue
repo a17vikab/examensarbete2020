@@ -23,11 +23,10 @@ export default {
   },
   methods: {
     async fetchData() {
-      let data = await d3.json("./dataset.json");
+      const data = await d3.json("./dataset.json");
       console.log(data);
       this.loadData = data;
-    },
-    initMap() {
+
       this.map = L.map("map").setView([20, 20], 3);
       this.tileLayer = L.tileLayer(
         "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
@@ -36,7 +35,34 @@ export default {
         }
       );
       this.tileLayer.addTo(this.map);
+
+      d3.select("#map")
+        .select("svg")
+        .selectAll("dataPoints")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d) {
+          return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
+        })
+        .attr("cy", function(d) {
+          return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
+        })
+        .attr("r", function(d) {
+          return d.brightness * 0.01;
+        })
+        .style("fill", function(d) {
+          if (d.brightness <= 310) {
+            return "#C4D60A";
+          } else if (d.brightness <= 320) {
+            return "#FFA500";
+          } else {
+            return "#D60C0A";
+          }
+        })
+        .attr("fill-opacity", 0.7);
     },
+    initMap() {},
     initLayers() {}
   }
 };
