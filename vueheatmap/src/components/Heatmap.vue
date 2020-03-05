@@ -55,9 +55,9 @@ export default {
 
         // Variable for config-values
         let config = {
-          radius: 0.25,
+          radius: 0.5,
           maxOpacity: 0.8,
-          blur: 0.3,
+          blur: 1,
           scaleRadius: true,
           useLocalExtrema: true,
           // Linking JSON-file-values to Heatmap.js variables.
