@@ -1,22 +1,25 @@
 <template>
   <div>
+    <!-- Element that contains map & visualization. -->
     <div id="map"></div>
   </div>
 </template>
 
 <script>
+// Import D3.js & Leaflet.js and refer them as d3 & L.
 import * as d3 from "d3";
 import L from "leaflet";
 
 export default {
   mounted() {
+    // Export method into index.html.
     this.init();
   },
   methods: {
     init() {
       // Function to load JSON-dataset asynchronously.
       function loadJSON(callback) {
-        // Create new instance of XMLHttpRequest
+        // Create new instance of XMLHttpRequest.
         let obj = new XMLHttpRequest();
         // Specifies type of data.
         obj.overrideMimeType("application/json");
@@ -36,7 +39,7 @@ export default {
 
       loadJSON(function(response) {
         // Parse the response in JSON-format.
-        let jsonResponse = JSON.parse(response);
+        let jsonData = JSON.parse(response);
 
         // Create Map with Leaflet.js and set view & zoom.
         let map = L.map("map").setView([20, 20], 3);
@@ -45,7 +48,8 @@ export default {
         L.tileLayer(
           "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
           {
-            maxZoom: 18
+            attribution: "Vue.js + D3.js",
+            maxZoom: 12
           }
           // Add to the map-variable.
         ).addTo(map);
@@ -59,7 +63,7 @@ export default {
           // Select all elements that will be drawn.
           .selectAll("dataPoints")
           // Add dataset as data() parameter.
-          .data(jsonResponse)
+          .data(jsonData)
           // Create empty elements for the data.
           .enter()
           // Append new element "circle" depending on size of the dataset.

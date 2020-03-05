@@ -1,6 +1,6 @@
 // Function to load JSON-dataset asynchronously.
 function loadJSON(callback) {
-  // Create new instance of XMLHttpRequest
+  // Create new instance of XMLHttpRequest.
   let obj = new XMLHttpRequest();
   // Specifies type of data.
   obj.overrideMimeType("application/json");
@@ -21,7 +21,7 @@ function loadJSON(callback) {
 function render() {
   loadJSON(function(response) {
     // Parse the response in JSON-format.
-    let jsonResponse = JSON.parse(response);
+    let jsonData = JSON.parse(response);
 
     // Create Map with Leaflet.js and set view & zoom.
     let map = L.map("map").setView([20, 20], 3);
@@ -45,7 +45,7 @@ function render() {
       // Select all elements that will be drawn.
       .selectAll("dataPoints")
       // Add dataset as data() parameter.
-      .data(jsonResponse)
+      .data(jsonData)
       // Create empty elements for the data.
       .enter()
       // Append new element "circle" depending on size of the dataset.
