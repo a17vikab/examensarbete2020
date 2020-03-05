@@ -44,6 +44,8 @@ function render() {
     // Add Leaflet-SVG to the map.
     L.svg().addTo(map);
 
+    console.log(jsonData);
+
     // Select element "map" and "svg".
     d3.select("#map")
       .select("svg")
@@ -76,17 +78,6 @@ function render() {
           return "#D60C0A";
         }
       })
-      // Depending on brightness, give according stroke-color.
-      // .attr("stroke", function(d) {
-      //   if (d.brightness <= 310) {
-      //     return "#C4D60A";
-      //   } else if (d.brightness <= 320) {
-      //     return "#FFA500";
-      //   } else {
-      //     return "#D60C0A";
-      //   }
-      // })
-      // .attr("stroke-width", 0.5)
       .attr("fill-opacity", 0.7);
 
     // Update function to render everything and update when the map changes.
