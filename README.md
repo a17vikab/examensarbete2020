@@ -2,22 +2,39 @@
 
 Examensarbete för Viktor Abrahamsson.
 
-# Visualisering av geospatialdata från FIRMS i heatmaps
+## Visualisering av geospatialdata från FIRMS i heatmaps
 
 En jämförelse av visualiseringstekniker med D3.js och Heatmap.js baserat på renderingstider.
 
-# Visualization of geospatialdata from FIRMS in heatmaps
+## Visualization of geospatialdata from FIRMS in heatmaps
 
 A comparison of visuualization techniques with D3.js and Heatmap.js based on rendering times.
 
-- D3.js
-- Heatmap.js
-- Leaflet.js
-- Vue.js
+- [D3.js](https://d3js.org/)
+- [Heatmap.js](https://www.patrick-wied.at/static/heatmapjs/)
+- [Vue.js](https://vuejs.org/)
+- [Leaflet.js](https://leafletjs.com/)
+- [FIRMS](https://firms.modaps.eosdis.nasa.gov/)
 
-# Vue Information
+## Vue Information
 
 - Vue Version: 4.2.3
-- Vue Installation: Default NPM
 - Developed in development build
-- Will be tested in Production build
+
+### Project setup
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+
+```
+npm run build
+```
