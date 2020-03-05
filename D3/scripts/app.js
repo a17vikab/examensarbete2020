@@ -59,19 +59,30 @@ function render() {
       })
       // Add radius & style.
       .attr("r", function(d) {
-        return d.brightness * 0.01;
+        if (d.brightness <= 305) {
+          return "4";
+        } else if (d.brightness <= 310) {
+          return "4.3";
+        } else if (d.brightness <= 320) {
+          return "4.6";
+        } else if (d.brightness > 321) {
+          return "5";
+        }
       })
       // Depending on brightness, give according fill-color.
       .style("fill", function(d) {
-        if (d.brightness <= 310) {
-          return "#C4D60A";
+        if (d.brightness <= 305) {
+          return "rgb(0,191,255)";
+        } else if (d.brightness <= 310) {
+          return "rgb(0,255,0)";
         } else if (d.brightness <= 320) {
-          return "#FFA500";
-        } else {
-          return "#D60C0A";
+          return "rgb(255,255,0)";
+        } else if (d.brightness > 321) {
+          return "rgb(255,0,0)";
         }
       })
-      .attr("fill-opacity", 0.7);
+      .attr("fill-opacity", 0.4);
+
     // Update function to render everything and update when the map changes.
     function Update() {
       // Select all d3-circles
