@@ -1,19 +1,16 @@
 <template>
   <div id="app">
     <Heatmap></Heatmap>
-    <!-- <Leaflet></Leaflet> -->
   </div>
 </template>
 
 <script>
 import Heatmap from "./components/Heatmap.vue";
-// import Leaflet from "./assets/js/leaflet";
 
 export default {
   name: "App",
   components: {
     Heatmap
-    // Leaflet
   }
 };
 </script>

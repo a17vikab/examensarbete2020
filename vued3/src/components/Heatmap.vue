@@ -6,16 +6,9 @@
 
 <script>
 import * as d3 from "d3";
-import * as L from "leaflet";
-// import Leaflet from "../assets/js/leaflet";
+import L from "leaflet";
 
 export default {
-  components: {},
-  data() {
-    return {
-      loadData: {}
-    };
-  },
   mounted() {
     this.init();
   },
@@ -58,7 +51,9 @@ export default {
           .attr("cy", function(d) {
             return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
           })
-          .attr("r", "4")
+          .attr("r", function(d) {
+            return d.brightness * 0.01;
+          })
           .style("fill", function(d) {
             if (d.brightness <= 310) {
               return "#C4D60A";
