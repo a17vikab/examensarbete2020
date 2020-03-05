@@ -23,11 +23,6 @@ function render() {
     // Parse the response in JSON-format.
     let jsonResponse = JSON.parse(response);
 
-    // // Store the parsed JSON-data.
-    // let jsonData = {
-    //   data: jsonResponse
-    // };
-
     // Create Map with Leaflet.js and set view & zoom.
     let map = L.map("map").setView([20, 20], 3);
 
@@ -38,7 +33,7 @@ function render() {
         attribution: "D3.js",
         maxZoom: 12
       }
-      // Add to the map-variable
+      // Add to the map-variable.
     ).addTo(map);
 
     // Add Leaflet-SVG to the map.
@@ -77,7 +72,6 @@ function render() {
         }
       })
       .attr("fill-opacity", 0.7);
-
     // Update function to render everything and update when the map changes.
     function Update() {
       // Select all d3-circles
@@ -90,7 +84,6 @@ function render() {
           return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
         });
     }
-
     // Fire "Update()" when a move has ended on the map.
     map.on("moveend", Update);
   });
