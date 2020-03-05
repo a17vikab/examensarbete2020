@@ -8,7 +8,7 @@ En jämförelse av visualiseringstekniker med D3.js och Heatmap.js baserat på r
 
 ## Visualization of geospatialdata from FIRMS in heatmaps
 
-A comparison of visuualization techniques with D3.js and Heatmap.js based on rendering times.
+A comparison of visualization techniques with D3.js and Heatmap.js based on rendering times.
 
 ## Technologies
 
@@ -24,6 +24,8 @@ A comparison of visuualization techniques with D3.js and Heatmap.js based on ren
 - Developed in development build
 
 ### Project setup
+
+- Default settings
 
 ```
 npm install

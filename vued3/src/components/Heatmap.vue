@@ -112,6 +112,7 @@ export default {
 </script>
 
 <style scoped>
+/* Scoped style for only this component */
 #map {
   width: 100vw;
   height: 100vh;
