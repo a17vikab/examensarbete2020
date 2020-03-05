@@ -1,6 +1,6 @@
-# Examensarbete2020
+# Examensarbete 2020 - Viktor Abrahamsson
 
-Examensarbete för Viktor Abrahamsson.
+Examensarbete för Viktor Abrahamsson (a17vikab).
 
 ## Visualisering av geospatialdata från FIRMS i heatmaps
 
@@ -9,6 +9,8 @@ En jämförelse av visualiseringstekniker med D3.js och Heatmap.js baserat på r
 ## Visualization of geospatialdata from FIRMS in heatmaps
 
 A comparison of visuualization techniques with D3.js and Heatmap.js based on rendering times.
+
+## Technologies
 
 - [D3.js](https://d3js.org/)
 - [Heatmap.js](https://www.patrick-wied.at/static/heatmapjs/)

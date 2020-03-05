@@ -1,4 +1,4 @@
-# Vue.js + D3.js
+# Vue.js + D3.js + Leaflet.js
 
 ## Project setup
 
