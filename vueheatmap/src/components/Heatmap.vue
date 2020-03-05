@@ -1,10 +1,12 @@
 <template>
   <div>
+    <!-- Element that contains map & visualization. -->
     <div id="map"></div>
   </div>
 </template>
 
 <script>
+// Import Leaflet.js, Heatmap.js & Leaflet-Heatmap-plugin.
 import L from "leaflet";
 import "heatmap.js";
 import HeatmapOverlay from "leaflet-heatmap";
@@ -12,10 +14,12 @@ import HeatmapOverlay from "leaflet-heatmap";
 export default {
   name: "Heatmap",
   mounted() {
+    // Export method into index.html.
     this.init();
   },
   methods: {
     init() {
+      // Function to load JSON-dataset asynchronously.
       function loadJSON(callback) {
         // Create new instance of XMLHttpRequest
         let obj = new XMLHttpRequest();

@@ -11,6 +11,7 @@ import * as d3 from "d3";
 import L from "leaflet";
 
 export default {
+  name: "Heatmap",
   mounted() {
     // Export method into index.html.
     this.init();
@@ -116,5 +117,10 @@ export default {
 #map {
   width: 100vw;
   height: 100vh;
+}
+
+/* TODO: check if this effects */
+.leaflet-container {
+  background: rgba(0, 0, 0, 0.8) !important;
 }
 </style>
