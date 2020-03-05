@@ -23,10 +23,10 @@ function render() {
     // Parse the response in JSON-format.
     let jsonResponse = JSON.parse(response);
 
-    // Store the parsed JSON-data.
-    let jsonData = {
-      data: jsonResponse
-    };
+    // // Store the parsed JSON-data.
+    // let jsonData = {
+    //   data: jsonResponse
+    // };
 
     // Create Map with Leaflet.js and set view & zoom.
     let map = L.map("map").setView([20, 20], 3);
@@ -43,8 +43,6 @@ function render() {
 
     // Add Leaflet-SVG to the map.
     L.svg().addTo(map);
-
-    console.log(jsonData);
 
     // Select element "map" and "svg".
     d3.select("#map")
