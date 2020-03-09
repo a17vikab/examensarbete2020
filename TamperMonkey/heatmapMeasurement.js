@@ -49,8 +49,10 @@
 
   // This makes sure that we can run the script after the page has loaded.
   if (window.addEventListener) {
+    // Mozilla, Netscape, Firefox
     window.addEventListener("load", loadWindow, false);
   } else if (window.attachEvent) {
+    // IE
     window.attachEvent("onload", loadWindow);
   }
 
@@ -74,21 +76,28 @@
     counter = localStorage.getItem("counter");
 
     if (counter < runs) {
+      // Click the measurementButton.
       measurementButton.click();
 
+      // Get localStorage for clicked.
       var clicked = localStorage.getItem("clicked");
 
       if (clicked == "yes") {
+        // Get localStorage for sendData.
         var sendData = localStorage.getItem("sendData: ");
 
+        // Import the t0-variable and make it to a Date-object.
         t0 = new Date(localStorage.getItem("Start: "));
 
+        // Import the t1-variable.
         t1 = new Date();
         localStorage.setItem("End: ", t1);
 
+        // Calculate the result.
         result = t1 - t0 + "\n";
         localStorage.setItem("Result: ", result);
 
+        // Send data to txt-file with ajaxCall-function.
         if (sendData == "yes") {
           scrapedData.push(result);
           ajaxCall(scrapedData);
@@ -97,6 +106,7 @@
 
         counter++;
 
+        // Store counter and clicked in localStorage.
         localStorage.setItem("counter", counter);
         localStorage.setItem("clicked", "no");
       }
