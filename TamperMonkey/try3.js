@@ -29,6 +29,11 @@ var time = localStorage.getItem("time");
       } else {
         time = JSON.parse(time);
       }
+      time.push(localStorage.getItem("renderingTime"));
+      localStorage.setItem("time", JSON.stringify(time));
+      localStorage.setItem("counter", counter++);
+      location.reload();
     }, 3000);
+  } else {
   }
 })();
