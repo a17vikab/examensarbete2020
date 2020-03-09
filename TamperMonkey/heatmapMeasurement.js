@@ -4,7 +4,7 @@
 // @version     0.1
 // @description Measurement-script for heatmap-data.
 // @author      Viktor Abrahamsson
-// @match       https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
+// @match       http://127.0.0.1:5500/HeatmapJS/index.html
 // @require     https://code.jquery.com/jquery-2.2.4.min.js
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
 // @grant       GM_xmlhttpRequest
@@ -14,16 +14,14 @@
   "use strict";
 
   // URL for the php-file for the scrapper.
-  const URL =
-    "https://wwwlab.iit.his.se/a17vikab/examensarbete/dataReceiver.php";
+  const URL = "https://wwwlab.iit.his.se/a17vikab/CMS/scraped_receiver.php";
   // Button to start measurement.
   const measurementButton = document.getElementById("startMeasurement");
   // Container for the scraped data.
   let scrapedData = [];
   // Variable for keeping score of how many times each word are searched.
-  let counter = localstorage.getItem("counter");
-  // Number of times the script will run.
-  let runs = 10;
+  let counter = localStorage.getItem("counter");
+
   // Variable that tracks the start of the timer.
   let t0;
   // Variable that tracks the end of the timer.
@@ -47,21 +45,14 @@
     }
   }
 
-  // This makes sure that we can run the script after the page has loaded.
-  if (window.addEventListener) {
-    // Mozilla, Netscape, Firefox
-    window.addEventListener("load", loadWindow, false);
-  } else if (window.attachEvent) {
-    // IE
-    window.attachEvent("onload", loadWindow);
-  }
+  window.addEventListener("load", loadWindow, false);
 
   // Eventlistener that start the timer and stores the beginning in LocalStorage.
   measurementButton.addEventListener("click", function() {
-    localStorage.setItem("sendData: ", "yes");
-    localStorage.setItem("clicked: ", "yes");
     t0 = new Date();
     localStorage.setItem("Start: ", t0);
+    localStorage.setItem("sendData: ", "yes");
+    localStorage.setItem("clicked: ", "yes");
   });
 
   // Check if the script have been active before.
@@ -74,6 +65,9 @@
   function loadWindow(event) {
     // Get localStorage for counter.
     counter = localStorage.getItem("counter");
+
+    // Number of times the script will run.
+    let runs = 10;
 
     if (counter < runs) {
       // Click the measurementButton.
@@ -105,6 +99,7 @@
         }
 
         counter++;
+        console.log(counter);
 
         // Store counter and clicked in localStorage.
         localStorage.setItem("counter", counter);
