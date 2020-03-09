@@ -12,16 +12,26 @@
 
 (function() {
   "use strict";
-  // Variables
+
+  // URL for the php-file for the scrapper.
   const URL =
     "https://wwwlab.iit.his.se/a17vikab/examensarbete/dataReceiver.php";
-  let scrapedData = [];
-  let runs = 10;
-  let counter = localstorage.getItem("counter");
+  // Button to start measurement.
   const measurementButton = document.getElementById("startMeasurement");
+  // Container for the scraped data.
+  let scrapedData = [];
+  // Variable for keeping score of how many times each word are searched.
+  let counter = localstorage.getItem("counter");
+  // Number of times the script will run.
+  let runs = 10;
+  // Variable that tracks the start of the timer.
   let t0;
+  // Variable that tracks the end of the timer.
   let t1;
+  // The difference between t0 and t1.
+  let result;
 
+  // Function that handles the datatransfer.
   function ajaxCall(data) {
     try {
       GM_xmlhttpRequest({
@@ -37,27 +47,59 @@
     }
   }
 
+  // This makes sure that we can run the script after the page has loaded.
   if (window.addEventListener) {
-    t0 = new Date();
-    localStorage.setItem("Start: ", t0);
-
     window.addEventListener("load", loadWindow, false);
   } else if (window.attachEvent) {
     window.attachEvent("onload", loadWindow);
   }
 
-  measurementButton.addEventListener("click", function() {});
+  // Eventlistener that start the timer and stores the beginning in LocalStorage.
+  measurementButton.addEventListener("click", function() {
+    localStorage.setItem("sendData: ", "yes");
+    localStorage.setItem("clicked: ", "yes");
+    t0 = new Date();
+    localStorage.setItem("Start: ", t0);
+  });
 
+  // Check if the script have been active before.
   if (counter == null) {
     counter = 0;
     localStorage.setItem("counter", counter);
   }
 
+  // This makes sure that we can run the script after the page has loaded.
   function loadWindow(event) {
     // Get localStorage for counter.
     counter = localStorage.getItem("counter");
 
     if (counter < runs) {
+      measurementButton.click();
+
+      var clicked = localStorage.getItem("clicked");
+
+      if (clicked == "yes") {
+        var sendData = localStorage.getItem("sendData: ");
+
+        t0 = new Date(localStorage.getItem("Start: "));
+
+        t1 = new Date();
+        localStorage.setItem("End: ", t1);
+
+        result = t1 - t0 + "\n";
+        localStorage.setItem("Result: ", result);
+
+        if (sendData == "yes") {
+          scrapedData.push(result);
+          ajaxCall(scrapedData);
+          sendData == "no";
+        }
+
+        counter++;
+
+        localStorage.setItem("counter", counter);
+        localStorage.setItem("clicked", "no");
+      }
     }
   }
 })();
