@@ -4,24 +4,61 @@
 // @version     1
 // @description Measurement-script for heatmap-data.
 // @author      Viktor Abrahamsson
-// @require     https://code.jquery.com/jquery-3.4.0.js
-// @match       http://127.0.0.1:5500/HeatmapJS/index.html
+// @require     https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
+// @match       http://127.0.0.1:5500/D3/index.html
 // grant        none
 // ==/UserScript==
 
-var runs = 10;
-var counter = localStorage.getItem("counter");
-var resultArray = localStorage.getItem("resultArray");
+let numberOfRuns = 3;
+let counter = localStorage.getItem("counter");
+let resultArray = localStorage.getItem("resultArray");
 
 (function() {
-  if (counter == null || counter == "" || counter == "NaN") {
+  if (
+    counter == null ||
+    counter == undefined ||
+    counter == "" ||
+    counter == "NaN"
+  ) {
     counter = 0;
     localStorage.setItem("counter", counter);
   }
 
-  if (counter < runs) {
-    location.reload();
+  if (counter < numberOfRuns) {
+    setTimeout(function() {
+      location.reload();
+      if (resultArray == "" || resultArray == null) {
+        resultArray = [];
+      } else {
+        resultArray = JSON.parse(resultArray);
+      }
+      resultArray.push(localStorage.getItem("result"));
+      localStorage.setItem("resultArray", JSON.stringify(resultArray));
+      localStorage.setItem("counter", ++counter);
+    }, 3000);
+  } else {
+    $("html").append(
+      '<a download="data.txt" id="download" style="display: none;">Download</a>'
+    );
+    let link;
+    let data;
+    let text = "";
+    let textFile = null;
+    var makeTextFile = () => {
+      // Import resultArray from localStorage.
+      resultArray = JSON.parse(localStorage.getItem("resultArray"));
+      // Iterate resultArray length into text-variable.
+      for (let i = 0; i < resultArray.length; i++) {
+        text += resultArray[i] + "\n";
+      }
+      data = new Blob([text], { type: "text/plain" });
+      textFile = window.URL.createObjectURL(data);
+      return textFile;
+    };
+
+    link = document.getElementById("download");
+    link.href = makeTextFile("data");
+    localStorage.clear();
+    link.click();
   }
 })();
-
-// result.push(localStorage.getItem("result"));
