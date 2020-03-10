@@ -19,6 +19,9 @@ function loadJSON(callback) {
 }
 
 function render() {
+  // Set start-time.
+  let t0 = new Date();
+  console.log("t0: " + t0);
   loadJSON(function(response) {
     // Parse the response in JSON-format.
     let jsonData = JSON.parse(response);
@@ -82,6 +85,11 @@ function render() {
         }
       })
       .attr("fill-opacity", 0.4);
+    // Set stop-time and calculate result. TODO: convert parts into external script.
+    let t1 = new Date();
+    console.log("t1: " + t1);
+    let result = t1 - t0;
+    console.log(result);
 
     // Update function to render everything and update when the map changes.
     function Update() {
