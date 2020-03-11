@@ -9,7 +9,7 @@
 // grant        none
 // ==/UserScript==
 
-let numberOfRuns = 3;
+let numberOfRuns = 1000;
 let counter = localStorage.getItem("counter");
 let resultArray = localStorage.getItem("resultArray");
 
@@ -35,7 +35,7 @@ let resultArray = localStorage.getItem("resultArray");
       resultArray.push(localStorage.getItem("result"));
       localStorage.setItem("resultArray", JSON.stringify(resultArray));
       localStorage.setItem("counter", ++counter);
-    }, 3000);
+    }, 2500);
   } else {
     $("html").append(
       '<a download="data.txt" id="download" style="display: none;">Download</a>'
