@@ -19,6 +19,9 @@ function loadJSON(callback) {
 }
 
 function render() {
+  // Set start-time.
+  let t0 = new Date().getTime();
+
   loadJSON(function(response) {
     // Parse the response in JSON-format.
     let jsonResponse = JSON.parse(response);
@@ -62,6 +65,13 @@ function render() {
 
     // Set the data to the data from loadJSON().
     heatmapLayer.setData(jsonData);
+
+    let t1 = new Date().getTime();
+
+    // Calculate difference & store in localStorage for TamperMonkey.
+    let result = t1 - t0;
+    localStorage.setItem("result", result);
+    console.log(localStorage);
   });
 }
 

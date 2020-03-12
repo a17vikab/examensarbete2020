@@ -1,15 +1,17 @@
 // ==UserScript==
-// @name        d3Measurement.js
+// @name        measurement.js
 // @namespace   http://tampermonkey.net/
 // @version     1
 // @description Measurement-script for heatmap-data.
 // @author      Viktor Abrahamsson
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // @match       http://127.0.0.1:5500/D3/index.html
+// @match       http://127.0.0.1:5500/HeatmapJS/index.html
+// @match       http://localhost:8080/
 // grant        none
 // ==/UserScript==
 
-let numberOfRuns = 1000;
+let numberOfRuns = 50;
 let counter = localStorage.getItem("counter");
 let resultArray = localStorage.getItem("resultArray");
 

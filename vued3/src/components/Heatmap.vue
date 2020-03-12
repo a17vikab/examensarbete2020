@@ -38,6 +38,9 @@ export default {
         obj.send(null);
       }
 
+      // Set start-time.
+      let t0 = new Date().getTime();
+
       loadJSON(function(response) {
         // Parse the response in JSON-format.
         let jsonData = JSON.parse(response);
@@ -101,6 +104,13 @@ export default {
             }
           })
           .attr("fill-opacity", 0.4);
+
+        let t1 = new Date().getTime();
+
+        // Calculate difference & store in localStorage for TamperMonkey.
+        let result = t1 - t0;
+        localStorage.setItem("result", result);
+        console.log(localStorage);
 
         // Update function to render everything and update when the map changes.
         function Update() {
