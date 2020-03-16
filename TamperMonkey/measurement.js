@@ -11,7 +11,7 @@
 // grant        none
 // ==/UserScript==
 
-let numberOfRuns = 50;
+let numberOfRuns = 100;
 let counter = localStorage.getItem("counter");
 let resultArray = localStorage.getItem("resultArray");
 

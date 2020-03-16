@@ -42,7 +42,7 @@ function render() {
 
     // Variable for config-values
     let config = {
-      radius: 0.25,
+      radius: 0.4,
       maxOpacity: 0.8,
       blur: 0.3,
       scaleRadius: true,
