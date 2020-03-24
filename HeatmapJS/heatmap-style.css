@@ -16,24 +16,3 @@ body {
 .leaflet-container {
   background: rgba(0, 0, 0, 0.8) !important;
 }
-
-.buttonPlacement {
-  position: absolute;
-  z-index: 10;
-  bottom: 20px;
-  left: 2px;
-}
-
-#download div,
-#startMeasurement div {
-  width: 80px;
-  text-align: center;
-  background: #ffffff;
-  box-sizing: border-box;
-  margin: 5px;
-}
-
-#download div:hover,
-#startMeasurement div:hover {
-  cursor: pointer;
-}
