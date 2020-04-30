@@ -5,9 +5,9 @@ function loadJSON(callback) {
   // Specifies type of data.
   obj.overrideMimeType("application/json");
   // Get the JSON-file.
-  obj.open("GET", "../Dataset/dataset.json", true);
+  obj.open("GET", "../Dataset/dec_1-2_7_5.json", true);
   // EventHandler for readystatechange.
-  obj.onreadystatechange = function() {
+  obj.onreadystatechange = function () {
     // Defining the error.
     if (obj.readyState == 4 && obj.status == "200") {
       // Throw an "InvalidStateError".
@@ -22,7 +22,7 @@ function render() {
   // Set start-time.
   let t0 = new Date().getTime();
 
-  loadJSON(function(response) {
+  loadJSON(function (response) {
     // Parse the response in JSON-format.
     let jsonData = JSON.parse(response);
 
@@ -34,7 +34,7 @@ function render() {
       "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
       {
         attribution: "D3.js",
-        maxZoom: 12
+        maxZoom: 12,
       }
       // Add to the map-variable.
     ).addTo(map);
@@ -54,14 +54,14 @@ function render() {
       // Append new element "circle" depending on size of the dataset.
       .append("circle")
       // Linking coordinates from dataset to D3.js.
-      .attr("cx", function(d) {
+      .attr("cx", function (d) {
         return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
       })
-      .attr("cy", function(d) {
+      .attr("cy", function (d) {
         return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
       })
       // Add radius & style.
-      .attr("r", function(d) {
+      .attr("r", function (d) {
         if (d.brightness <= 305) {
           return "4";
         } else if (d.brightness <= 310) {
@@ -73,7 +73,7 @@ function render() {
         }
       })
       // Depending on brightness, give according fill-color.
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         if (d.brightness <= 305) {
           return "rgb(0,191,255)";
         } else if (d.brightness <= 310) {
@@ -98,10 +98,10 @@ function render() {
       // Select all d3-circles
       d3.selectAll("circle")
         // Update the coordniates depending on pan & zoom.
-        .attr("cx", function(d) {
+        .attr("cx", function (d) {
           return map.latLngToLayerPoint([d.latitude, d.longitude]).x;
         })
-        .attr("cy", function(d) {
+        .attr("cy", function (d) {
           return map.latLngToLayerPoint([d.latitude, d.longitude]).y;
         });
     }

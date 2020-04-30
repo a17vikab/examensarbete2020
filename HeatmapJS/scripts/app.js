@@ -5,9 +5,9 @@ function loadJSON(callback) {
   // Specifies type of data.
   obj.overrideMimeType("application/json");
   // Get the JSON-file.
-  obj.open("GET", "../Dataset/dataset.json", true);
+  obj.open("GET", "../Dataset/nov_1-2.json", true);
   // EventHandler for readystatechange.
-  obj.onreadystatechange = function() {
+  obj.onreadystatechange = function () {
     // Defining the error.
     if (obj.readyState == 4 && obj.status == "200") {
       // Throw an "InvalidStateError".
@@ -22,13 +22,13 @@ function render() {
   // Set start-time.
   let t0 = new Date().getTime();
 
-  loadJSON(function(response) {
+  loadJSON(function (response) {
     // Parse the response in JSON-format.
     let jsonResponse = JSON.parse(response);
 
     // Store the parsed JSON-data.
     let jsonData = {
-      data: jsonResponse
+      data: jsonResponse,
     };
 
     // Create LeafletLayer that holds the actual map.
@@ -36,7 +36,7 @@ function render() {
       "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
       {
         attribution: "Heatmap.js",
-        maxZoom: 12
+        maxZoom: 12,
       }
     );
 
@@ -50,7 +50,7 @@ function render() {
       // Linking JSON-file-values to Heatmap.js variables.
       latField: "latitude",
       lngField: "longitude",
-      valueField: "brightness"
+      valueField: "brightness",
     };
 
     // Create Layer and place config-variable in that overlay.
@@ -60,7 +60,7 @@ function render() {
     let map = new L.Map("map", {
       center: new L.LatLng(20, 20),
       zoom: 3,
-      layers: [leafletLayer, heatmapLayer]
+      layers: [leafletLayer, heatmapLayer],
     });
 
     // Set the data to the data from loadJSON().
