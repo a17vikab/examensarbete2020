@@ -25,7 +25,7 @@ export default {
         // Specifies type of data.
         obj.overrideMimeType("application/json");
         // Get the JSON-file.
-        obj.open("GET", "./dataset.json", true);
+        obj.open("GET", "./nov_1-8_30.json", true);
         // EventHandler for readystatechange.
         obj.onreadystatechange = function() {
           // Defining the error.
