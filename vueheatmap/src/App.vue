@@ -28,5 +28,6 @@ export default {
 body {
   height: 100vh;
   width: 100vw;
+  background: #222222;
 }
 </style>
